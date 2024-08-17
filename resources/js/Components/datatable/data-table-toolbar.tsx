@@ -6,7 +6,7 @@ import { Button } from "@/Components/ui/button";
 import { Input } from "@/Components/ui/input";
 import { DataTableViewOptions } from "../datatable/data-table-view-options";
 
-import { priorities, statuses } from "./data/data";
+import { priorities, statuses } from "./programs/data";
 import { DataTableFacetedFilter } from "./data-table-faceted-filter";
 import { X } from "lucide-react";
 

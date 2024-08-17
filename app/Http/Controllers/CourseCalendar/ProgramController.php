@@ -15,16 +15,11 @@ class ProgramController extends Controller
     public function index()
     {
 
-        $progams = Program::all();
-        //dd($progams);
+        $programs = Program::all();
+        //dd($programs);
 
         return Inertia::render('CourseCalendar/Program/Programs', [
-            'progams' => $progams->only(
-                'id',
-                'prog_name',
-                'prog_fee',
-                'reg_open_date'
-            ),
+            'programs' => $programs,
         ]);
 
     }

@@ -16,8 +16,8 @@ import {
     DropdownMenuTrigger,
 } from "@/Components/ui/dropdown-menu";
 
-import { labels } from "./data/data";
-import { taskSchema } from "./data/schema";
+import { labels } from "./programs/data";
+import { taskSchema } from "./programs/schema";
 import { Ellipsis } from "lucide-react";
 
 interface DataTableRowActionsProps<TData> {
