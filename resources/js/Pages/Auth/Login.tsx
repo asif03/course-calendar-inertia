@@ -52,7 +52,7 @@ export default function Login({
                     {status}
                 </div>
             )}
-            <Card className="mx-auto max-w-sm">
+            <Card className="mx-auto max-w-sm border-0 bg-background dark:bg-background">
                 <CardHeader className="text-primary dark:text-primary">
                     <CardTitle className="text-5xl font-semibold">
                         Sign in
@@ -144,7 +144,7 @@ export default function Login({
                     </form>
                     <div className="mt-4 text-left text-sm">
                         Don&apos;t have an account?{" "}
-                        <Link href="#" className="underline">
+                        <Link href="/register" className="underline">
                             Sign up
                         </Link>
                     </div>

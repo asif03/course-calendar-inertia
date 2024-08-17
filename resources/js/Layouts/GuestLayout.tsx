@@ -11,33 +11,43 @@ export default function Guest({ children }: PropsWithChildren) {
 
     return (
         <ThemeProvider>
-            <div className="flex min-h-screen flex-col items-center bg-background pt-6 dark:bg-background sm:justify-center sm:pt-0">
-                <div>
+            <div className="h-screen w-full lg:grid lg:grid-cols-2">
+                <div className="flex flex-col items-center justify-center bg-background py-4 dark:bg-background">
                     <Link href="/">
                         <ApplicationLogo className="h-20 w-20 fill-current text-gray-500" />
                     </Link>
-                </div>
 
-                <div className="mt-6 w-full overflow-hidden bg-white px-6 py-4 shadow-md sm:max-w-md sm:rounded-lg">
-                    {children}
-                </div>
+                    <div className="w-full overflow-hidden px-4 py-4">
+                        {children}
+                    </div>
 
-                <div className="h-11 w-12 rounded-[32px] bg-[#F4F4F4] dark:bg-[#111315] sm:flex sm:items-center sm:justify-center">
-                    <button
-                        onClick={toggleTheme}
-                        className="flex h-9 w-10 items-center justify-center rounded-full bg-[#FCFCFC] dark:bg-[#272B30]"
-                    >
-                        <Sun
-                            className="block text-[#444444] dark:hidden"
-                            width={20}
-                            height={20}
-                        />
-                        <Moon
-                            className="hidden text-white dark:block"
-                            width={20}
-                            height={20}
-                        />
-                    </button>
+                    {/* <div className="h-11 w-12 rounded-[32px] bg-[#F4F4F4] dark:bg-[#111315] sm:flex sm:items-center sm:justify-center">
+                        <button
+                            onClick={toggleTheme}
+                            className="flex h-9 w-10 items-center justify-center rounded-full bg-[#FCFCFC] dark:bg-[#272B30]"
+                        >
+                            <Sun
+                                className="block text-[#444444] dark:hidden"
+                                width={20}
+                                height={20}
+                            />
+                            <Moon
+                                className="hidden text-white dark:block"
+                                width={20}
+                                height={20}
+                            />
+                        </button>
+                    </div> */}
+                </div>
+                <div className="hidden bg-muted lg:block">
+                    <img
+                        src="/assets/images/onboarding.jpg"
+                        alt="Image"
+                        width="1920"
+                        height="1080"
+                        className="h-full w-full object-cover dark:brightness-[0.2] dark:grayscale"
+                        style={{ aspectRatio: "1920/1080", objectFit: "cover" }}
+                    />
                 </div>
             </div>
         </ThemeProvider>

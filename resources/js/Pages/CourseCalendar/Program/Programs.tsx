@@ -4,7 +4,7 @@ import { PageProps } from "@/types";
 import { DataTable } from "@/Components/datatable/data-table";
 import { columns } from "@/Components/datatable/columns";
 
-const tasks = [
+/*const tasks = [
     {
         id: "TASK-8782",
         title: "You can't compress the program without quantifying the open-source SSD pixel!",
@@ -705,9 +705,10 @@ const tasks = [
         label: "bug",
         priority: "low",
     },
-];
+];*/
 
 const Programs = ({
+    programs,
     auth,
     mustVerifyEmail,
     status,
@@ -719,7 +720,9 @@ const Programs = ({
                 <h2 className="text-4xl font-semibold text-gray-900">
                     Program List
                 </h2>
-                <DataTable data={tasks} columns={columns} />
+                <div>
+                    <DataTable data={programs} columns={columns} />
+                </div>
             </div>
         </AuthenticatedLayout>
     );

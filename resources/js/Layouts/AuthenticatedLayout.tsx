@@ -52,7 +52,7 @@ export default function Authenticated({
                     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
                 </Head>
                 <div className="flex min-h-screen w-[100vw] flex-row bg-background dark:bg-background">
-                    <aside className="fixed inset-y-0 left-0 z-10 hidden w-0 flex-col justify-center border-r bg-foreground dark:bg-foreground sm:flex sm:w-14 lg:w-80">
+                    <aside className="fixed inset-y-0 left-0 z-10 hidden w-0 flex-col justify-center border-r bg-foreground dark:bg-foreground sm:flex sm:w-14 lg:w-72">
                         <nav className="flex flex-col items-center gap-4 px-6 sm:py-5">
                             <Link
                                 href="/"
@@ -105,7 +105,7 @@ export default function Authenticated({
                             <ToggleSwitch />
                         </nav>
                     </aside>
-                    <div className="relative left-0 top-0 flex w-full flex-col bg-background text-[#444444] dark:bg-background dark:text-[#FCFCFC] sm:left-14 sm:w-[calc(100vw-3.5rem)] lg:left-80 lg:w-[calc(100vw-20rem)]">
+                    <div className="relative left-0 top-0 flex w-full flex-col bg-background text-[#444444] dark:bg-background dark:text-[#FCFCFC] sm:left-14 sm:w-[calc(100vw-3.5rem)] lg:left-72 lg:w-[calc(100vw-18rem)]">
                         <header className="sticky top-0 z-30 flex h-14 items-center gap-4 border-b bg-foreground px-4 py-4 dark:bg-foreground sm:static sm:h-auto sm:border-0">
                             <Sheet>
                                 <SheetTrigger asChild>
