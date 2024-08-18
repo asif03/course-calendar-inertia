@@ -1,10 +1,7 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head } from "@inertiajs/react";
 import { PageProps } from "@/types";
-import { DataTable } from "@/Components/datatable/programs/data-table";
-import { columns } from "@/Components/datatable/programs/columns";
-/*import { DataTable } from "@/Components/datatable/tasks/data-table";
-import { columns } from "@/Components/datatable/tasks/columns";
+import ProgramDataTable from "@/Components/datatable/tasks/ProgramDataTable";
 
 const tasks = [
     {
@@ -28,39 +25,28 @@ const tasks = [
         label: "bug",
         priority: "high",
     },
-];*/
-
-const programs = [
-    {
-        id: 1,
-        department: "IT Department",
-        status: "in progress",
-        label: "documentation",
-        priority: "medium",
-    },
-    {
-        id: 2,
-        department: "RTMD Department",
-        status: "backlog",
-        label: "documentation",
-        priority: "medium",
-    },
-    {
-        id: 3,
-        department: "Admin Department",
-        status: "todo",
-        label: "bug",
-        priority: "high",
-    },
 ];
+
+interface IProgram {
+    id: bigint;
+    dept_name: string;
+    prog_name: string;
+    prog_fee: number;
+    notice_link: string;
+    course_status: string;
+    is_attachment: string;
+    status: string;
+}
 
 const Programs = ({
     auth,
     mustVerifyEmail,
     status,
+    programs,
 }: PageProps<{
     mustVerifyEmail: boolean;
     status?: string;
+    programs: IProgram[];
 }>) => {
     console.log(programs);
     return (
@@ -70,13 +56,16 @@ const Programs = ({
                 <h2 className="text-4xl font-semibold text-gray-900">
                     Program List
                 </h2>
-
                 <div>
-                    Programs
-                    <DataTable data={programs} columns={columns} />
+                    <ProgramDataTable />
                 </div>
-
-                <div> {/* <DataTable data={tasks} columns={columns} /> */}</div>
+                <div>
+                    {programs.map((item) => (
+                        <div key={item.id}>
+                            <h2>{item.prog_name}</h2>
+                        </div>
+                    ))}
+                </div>
             </div>
         </AuthenticatedLayout>
     );

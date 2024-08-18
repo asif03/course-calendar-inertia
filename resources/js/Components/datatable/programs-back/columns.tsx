@@ -5,13 +5,12 @@ import { ColumnDef } from "@tanstack/react-table";
 import { Badge } from "@/Components/ui/badge";
 import { Checkbox } from "@/Components/ui/checkbox";
 
-import { labels, priorities, statuses } from "./data/data";
-import { Program } from "./data/schema";
+import { labels, priorities, statuses } from "./data";
+import { Task } from "./schema";
+import { DataTableColumnHeader } from "../data-table-column-header";
+import { DataTableRowActions } from "../data-table-row-actions";
 
-import { DataTableColumnHeader } from "./data-table-column-header";
-import { DataTableRowActions } from "./data-table-row-actions";
-
-export const columns: ColumnDef<Program>[] = [
+export const columns: ColumnDef<Task>[] = [
     {
         id: "select",
         header: ({ table }) => (
@@ -41,22 +40,27 @@ export const columns: ColumnDef<Program>[] = [
     {
         accessorKey: "id",
         header: ({ column }) => (
-            <DataTableColumnHeader column={column} title="Program" />
+            <DataTableColumnHeader column={column} title="Task" />
         ),
         cell: ({ row }) => <div className="w-[80px]">{row.getValue("id")}</div>,
         enableSorting: false,
         enableHiding: false,
     },
     {
-        accessorKey: "department",
+        accessorKey: "title",
         header: ({ column }) => (
-            <DataTableColumnHeader column={column} title="Department Name" />
+            <DataTableColumnHeader column={column} title="Title" />
         ),
         cell: ({ row }) => {
+            const label = labels.find(
+                (label) => label.value === row.original.label,
+            );
+
             return (
                 <div className="flex space-x-2">
+                    {label && <Badge variant="outline">{label.label}</Badge>}
                     <span className="max-w-[500px] truncate font-medium">
-                        {row.getValue("department")}
+                        {row.getValue("title")}
                     </span>
                 </div>
             );
