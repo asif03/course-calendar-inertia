@@ -20,10 +20,12 @@ import { Ellipsis } from "lucide-react";
 
 interface DataTableRowActionsProps<TData> {
     row: Row<TData>;
+    dbId: bigint;
 }
 
 export function DataTableRowActions<TData>({
     row,
+    dbId,
 }: DataTableRowActionsProps<TData>) {
     return (
         <DropdownMenu>
@@ -37,9 +39,9 @@ export function DataTableRowActions<TData>({
                 </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="w-[160px]">
-                <DropdownMenuItem>Edit</DropdownMenuItem>
-                <DropdownMenuItem>Make a copy</DropdownMenuItem>
-                <DropdownMenuItem>Favorite</DropdownMenuItem>
+                <DropdownMenuItem>
+                    <a href="#">Edit</a>
+                </DropdownMenuItem>
                 <DropdownMenuItem>
                     Delete
                     <DropdownMenuShortcut>⌘⌫</DropdownMenuShortcut>

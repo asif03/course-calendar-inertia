@@ -1,11 +1,8 @@
 "use client";
 
 import { ColumnDef } from "@tanstack/react-table";
-
-import { Badge } from "@/Components/ui/badge";
 import { Checkbox } from "@/Components/ui/checkbox";
-
-import { labels, priorities, statuses } from "./data/data";
+import { statuses } from "./data/data";
 import { Program } from "./data/schema";
 
 import { DataTableColumnHeader } from "./data-table-column-header";
@@ -39,24 +36,60 @@ export const columns: ColumnDef<Program>[] = [
         enableHiding: false,
     },
     {
-        accessorKey: "id",
-        header: ({ column }) => (
-            <DataTableColumnHeader column={column} title="Program" />
-        ),
-        cell: ({ row }) => <div className="w-[80px]">{row.getValue("id")}</div>,
-        enableSorting: false,
-        enableHiding: false,
-    },
-    {
         accessorKey: "department",
         header: ({ column }) => (
-            <DataTableColumnHeader column={column} title="Department Name" />
+            <DataTableColumnHeader column={column} title="Department" />
         ),
         cell: ({ row }) => {
             return (
                 <div className="flex space-x-2">
                     <span className="max-w-[500px] truncate font-medium">
                         {row.getValue("department")}
+                    </span>
+                </div>
+            );
+        },
+    },
+    {
+        accessorKey: "title",
+        header: ({ column }) => (
+            <DataTableColumnHeader column={column} title="Title" />
+        ),
+        cell: ({ row }) => {
+            return (
+                <div className="flex space-x-2">
+                    <span className="max-w-[500px] truncate font-medium">
+                        {row.getValue("title")}
+                    </span>
+                </div>
+            );
+        },
+    },
+    {
+        accessorKey: "fee",
+        header: ({ column }) => (
+            <DataTableColumnHeader column={column} title="Fee" />
+        ),
+        cell: ({ row }) => {
+            return (
+                <div className="flex space-x-2">
+                    <span className="max-w-[500px] truncate font-medium">
+                        Tk. {row.getValue("fee")}
+                    </span>
+                </div>
+            );
+        },
+    },
+    {
+        accessorKey: "courseStatus",
+        header: ({ column }) => (
+            <DataTableColumnHeader column={column} title="Course Status" />
+        ),
+        cell: ({ row }) => {
+            return (
+                <div className="flex space-x-2">
+                    <span className="max-w-[500px] truncate font-medium">
+                        {row.getValue("courseStatus")}
                     </span>
                 </div>
             );
@@ -90,34 +123,9 @@ export const columns: ColumnDef<Program>[] = [
         },
     },
     {
-        accessorKey: "priority",
-        header: ({ column }) => (
-            <DataTableColumnHeader column={column} title="Priority" />
-        ),
-        cell: ({ row }) => {
-            const priority = priorities.find(
-                (priority) => priority.value === row.getValue("priority"),
-            );
-
-            if (!priority) {
-                return null;
-            }
-
-            return (
-                <div className="flex items-center">
-                    {priority.icon && (
-                        <priority.icon className="mr-2 h-4 w-4 text-muted-foreground" />
-                    )}
-                    <span>{priority.label}</span>
-                </div>
-            );
-        },
-        filterFn: (row, id, value) => {
-            return value.includes(row.getValue(id));
-        },
-    },
-    {
         id: "actions",
-        cell: ({ row }) => <DataTableRowActions row={row} />,
+        cell: ({ row }) => (
+            <DataTableRowActions row={row} dbId={row.getValue("id")} />
+        ),
     },
 ];

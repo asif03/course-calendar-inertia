@@ -21,3 +21,14 @@ export type PageProps<
         user: User;
     };
 };
+
+export interface IProgram {
+    id: bigint;
+    department: string;
+    title: string;
+    fee: number;
+    notice: string;
+    courseStatus: string;
+    attachment: string;
+    status: string;
+}

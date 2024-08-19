@@ -20,12 +20,12 @@ class ProgramRepository implements ProgramRepositoryInterface
 
         foreach ($programList as $prog) {
             $program['id'] = $prog->id;
-            $program['dept_name'] = $prog['department']->dept_name;
-            $program['prog_name'] = $prog->prog_name;
-            $program['prog_fee'] = $prog->prog_fee;
-            $program['notice_link'] = $prog->notice_link;
-            $program['course_status'] = $prog->course_status == 'M' ? 'Mandatory' : 'Optional';
-            $program['is_attachment'] = $prog->is_attachment ? 'Yes' : 'No';
+            $program['department'] = $prog['department']->dept_name;
+            $program['title'] = $prog->prog_name;
+            $program['fee'] = $prog->prog_fee;
+            $program['notice'] = $prog->notice_link;
+            $program['courseStatus'] = $prog->course_status == 'M' ? 'Mandatory' : 'Optional';
+            $program['attachment'] = $prog->is_attachment ? 'Yes' : 'No';
             $program['status'] = $prog->status ? 'Active' : 'Inactive';
 
             $programs[] = $program;

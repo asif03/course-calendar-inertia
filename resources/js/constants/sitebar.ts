@@ -8,11 +8,11 @@ export const sidebarMenu: SidebarMenuItem[] = [
         path: "/dashboard",
     },
     {
-        title: "Course Calendar",
+        title: "Course Settings",
         icon: CalendarCog, // Replace with the appropriate icon
         children: [
             {
-                title: "Progam",
+                title: "Programs",
                 icon: ListChecks,
                 path: "/course-calendar/programs",
             }, // Replace with appropriate icons

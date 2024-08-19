@@ -33,7 +33,7 @@ const Sidebar = () => {
                     >
                         <div className="hidden w-full flex-col lg:block">
                             <div className="flex w-full flex-row items-center justify-between">
-                                <div className="flex flex-row gap-2">
+                                <div className="flex cursor-pointer flex-row gap-2">
                                     <item.icon className="h-5 w-5" />
                                     <span>{item.title}</span>
                                 </div>

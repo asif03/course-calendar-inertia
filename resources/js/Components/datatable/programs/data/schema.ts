@@ -5,9 +5,12 @@ import { z } from "zod";
 export const programSchema = z.object({
     id: z.bigint(),
     department: z.string(),
+    title: z.string(),
+    fee: z.number(),
+    notice: z.string(),
+    courseStatus: z.string(),
+    attachment: z.string(),
     status: z.string(),
-    label: z.string(),
-    priority: z.string(),
 });
 
 export type Program = z.infer<typeof programSchema>;

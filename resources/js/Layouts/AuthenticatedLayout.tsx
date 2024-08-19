@@ -219,7 +219,7 @@ export default function Authenticated({
                                 </DropdownMenuContent>
                             </DropdownMenu>
                         </header>
-                        <main className="w-full px-8 py-8">{children}</main>
+                        <main className="w-full px-4 py-4">{children}</main>
                     </div>
                 </div>
             </ThemeProvider>
