@@ -41,7 +41,7 @@ export default function Guest({ children }: PropsWithChildren) {
                 </div>
                 <div className="hidden bg-muted lg:block">
                     <img
-                        src="/assets/images/onboarding.jpg"
+                        src={"/assets/images/onboarding.jpg"}
                         alt="Image"
                         width="1920"
                         height="1080"
