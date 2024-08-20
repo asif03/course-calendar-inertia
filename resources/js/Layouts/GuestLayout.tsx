@@ -2,6 +2,7 @@ import ApplicationLogo from "@/Components/ApplicationLogo";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import { Link } from "@inertiajs/react";
 import { PropsWithChildren } from "react";
+import onboardingImg from "/public/assets/images/onboarding.jpg";
 
 import { useThemeContext } from "@/contexts/ThemeContext";
 import { Moon, Sun } from "lucide-react";
@@ -41,7 +42,7 @@ export default function Guest({ children }: PropsWithChildren) {
                 </div>
                 <div className="hidden bg-muted lg:block">
                     <img
-                        src={"/assets/images/onboarding.jpg"}
+                        src={onboardingImg}
                         alt="Image"
                         width="1920"
                         height="1080"

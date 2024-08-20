@@ -83,8 +83,8 @@ export default function Login({
                         Or continue with email address
                     </div>
                     <form onSubmit={submit}>
-                        <div className="flex flex-col gap-2">
-                            <div className="relative ml-auto flex-1 md:grow-0">
+                        <div className="flex w-full flex-col gap-2">
+                            <div className="relative ml-auto w-full flex-1 md:grow-0">
                                 <MailIcon className="absolute left-2.5 top-3 h-4 w-4 text-muted-foreground" />
                                 <Input
                                     type="email"
@@ -97,6 +97,7 @@ export default function Login({
                                     onChange={(e) =>
                                         setData("email", e.target.value)
                                     }
+                                    required
                                 />
                                 <InputError
                                     message={errors.email}
@@ -104,7 +105,7 @@ export default function Login({
                                 />
                             </div>
 
-                            <div className="relative ml-auto flex-1 md:grow-0">
+                            <div className="relative ml-auto w-full flex-1 md:grow-0">
                                 <LockKeyhole className="absolute left-2.5 top-3 h-4 w-4 text-muted-foreground" />
                                 <Input
                                     type="password"
@@ -117,6 +118,7 @@ export default function Login({
                                     onChange={(e) =>
                                         setData("password", e.target.value)
                                     }
+                                    required
                                 />
                                 <InputError
                                     message={errors.password}
