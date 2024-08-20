@@ -3,6 +3,7 @@
 use App\Http\Controllers\CourseCalendar\ProgramController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -41,5 +42,11 @@ Route::prefix('course-calendar')->group(function () {
         Route::get('/programs', [ProgramController::class, 'index'])->name('progam.list');
     });
 });
+
+Route::get('/artisan-cmd', function () {
+    Artisan::call('key:generate');
+    Artisan::call('config:cache');
+    return 'Command run successfully!';
+})->name('artisan-cmd');
 
 require __DIR__ . '/auth.php';
