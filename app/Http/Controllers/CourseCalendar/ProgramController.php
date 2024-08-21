@@ -3,16 +3,19 @@
 namespace App\Http\Controllers\CourseCalendar;
 
 use App\Http\Controllers\Controller;
+use App\Interfaces\DepartmentRepositoryInterface;
 use App\Interfaces\ProgramRepositoryInterface;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
 class ProgramController extends Controller
 {
+    private DepartmentRepositoryInterface $departmentRepository;
     private ProgramRepositoryInterface $programRepository;
 
-    public function __construct(ProgramRepositoryInterface $programRepository)
+    public function __construct(DepartmentRepositoryInterface $departmentRepository, ProgramRepositoryInterface $programRepository)
     {
+        $this->departmentRepository = $departmentRepository;
         $this->programRepository = $programRepository;
     }
 
@@ -35,7 +38,10 @@ class ProgramController extends Controller
      */
     public function create()
     {
-        //
+        $departments = $this->departmentRepository->getAllDepartments();
+        return Inertia::render('CourseCalendar/Program/AddProgram', [
+            'departments' => $departments,
+        ]);
     }
 
     /**

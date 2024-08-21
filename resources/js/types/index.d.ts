@@ -32,3 +32,8 @@ export interface IProgram {
     attachment: string;
     status: string;
 }
+
+export interface IDepartment {
+    id: bigint;
+    department: string;
+}

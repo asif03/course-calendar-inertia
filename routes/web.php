@@ -39,7 +39,11 @@ Route::middleware('auth')->group(function () {
 
 Route::prefix('course-calendar')->group(function () {
     Route::middleware('auth')->group(function () {
-        Route::get('/programs', [ProgramController::class, 'index'])->name('progam.list');
+        Route::prefix('programs')->group(function () {
+            Route::get('/', [ProgramController::class, 'index'])->name('program.list');
+            Route::get('/new-program', [ProgramController::class, 'create'])->name('program.create');
+            Route::post('/store', [ProgramController::class, 'store'])->name('program.store');
+        });
     });
 });
 
