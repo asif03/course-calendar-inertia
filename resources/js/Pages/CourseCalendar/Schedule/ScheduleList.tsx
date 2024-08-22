@@ -1,11 +1,11 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import { Head, Link, router } from "@inertiajs/react";
+import { Head, Link } from "@inertiajs/react";
 import { IDepartment, IProgram, PageProps } from "@/types";
 import { DataTable } from "@/Components/datatable/programs/data-table";
 import { columns } from "@/Components/datatable/programs/columns";
 import { Button } from "@/Components/ui/button";
 import { FileIcon, PlusCircle } from "lucide-react";
-import ProgramBreadcrumb from "./ProgramBreadcrumb";
+import ScheduleBreadcrumb from "./ScheduleBreadcrumb";
 
 const Programs = ({
     auth,
@@ -21,7 +21,7 @@ const Programs = ({
             <Head title="Course Calendar :: Programs" />
             <div className="flex flex-col gap-4 text-primary dark:text-primary">
                 <div className="flex flex-row items-center justify-between">
-                    <ProgramBreadcrumb currentPage="All Programs" />
+                    <ScheduleBreadcrumb currentPage="All Schedules" />
                     <div className="flex flex-row gap-2">
                         <Button
                             size="sm"
