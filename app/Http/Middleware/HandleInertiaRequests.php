@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Interfaces\CompanyRepositoryInterface;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 
@@ -13,11 +14,17 @@ class HandleInertiaRequests extends Middleware
      * @var string
      */
     protected $rootView = 'app';
+    protected $companyRepository;
+
+    public function __construct(CompanyRepositoryInterface $companyRepository)
+    {
+        $this->companyRepository = $companyRepository;
+    }
 
     /**
      * Determine the current asset version.
      */
-    public function version(Request $request): string|null
+    public function version(Request $request): string | null
     {
         return parent::version($request);
     }
@@ -30,10 +37,11 @@ class HandleInertiaRequests extends Middleware
     public function share(Request $request): array
     {
         return [
-            ...parent::share($request),
-            'auth' => [
+             ...parent::share($request),
+            'auth'    => [
                 'user' => $request->user(),
             ],
+            'company' => $this->companyRepository->getActivatedCompany(),
         ];
     }
 }

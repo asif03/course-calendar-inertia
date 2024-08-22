@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use App\Interfaces\CompanyRepositoryInterface;
 use App\Interfaces\DepartmentRepositoryInterface;
 use App\Interfaces\ProgramRepositoryInterface;
+use App\Repositories\CompanyRepository;
 use App\Repositories\DepartmentRepository;
 use App\Repositories\ProgramRepository;
 use Illuminate\Support\ServiceProvider;
@@ -15,6 +17,7 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
+        $this->app->bind(CompanyRepositoryInterface::class, CompanyRepository::class);
         $this->app->bind(DepartmentRepositoryInterface::class, DepartmentRepository::class);
         $this->app->bind(ProgramRepositoryInterface::class, ProgramRepository::class);
     }

@@ -2,7 +2,7 @@ import { useState, PropsWithChildren, ReactNode } from "react";
 import ApplicationLogo from "@/Components/ApplicationLogo";
 import NavLink from "@/Components/NavLink";
 import ResponsiveNavLink from "@/Components/ResponsiveNavLink";
-import { Head, Link } from "@inertiajs/react";
+import { Head, Link, usePage } from "@inertiajs/react";
 import { User } from "@/types";
 import {
     Calendar,
@@ -45,12 +45,14 @@ export default function Authenticated({
     const [showingNavigationDropdown, setShowingNavigationDropdown] =
         useState(false);
 
+    const { company } = usePage().props;
+
     return (
         <>
+            <Head>
+                <link rel="icon" type="image/x-icon" href={company.favicon} />
+            </Head>
             <ThemeProvider>
-                <Head>
-                    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-                </Head>
                 <div className="flex min-h-screen w-[100vw] flex-row bg-background dark:bg-background">
                     <aside className="fixed inset-y-0 left-0 z-10 hidden w-0 flex-col justify-center border-r bg-foreground dark:bg-foreground sm:flex sm:w-14 lg:w-72">
                         <nav className="flex flex-col items-center gap-4 px-6 sm:py-5">
@@ -58,9 +60,13 @@ export default function Authenticated({
                                 href="/"
                                 className="group flex h-9 w-9 shrink-0 items-center justify-center gap-2 rounded-full text-lg font-semibold text-primary dark:text-primary md:h-8 md:w-8 md:text-base lg:w-full lg:justify-start"
                             >
-                                <ApplicationLogo width={36} height={36} />
+                                <ApplicationLogo
+                                    logoUrl={company.logoDashboard}
+                                    logoWidth={company.logoWidthDashboard}
+                                    logoHeight={company.logoHeightDashboard}
+                                />
                                 <span className="hidden lg:block">
-                                    Code With Asif
+                                    {company.companyShortName}
                                 </span>
                             </Link>
                             <Sidebar />
@@ -189,7 +195,7 @@ export default function Authenticated({
                                         className="overflow-hidden rounded-full"
                                     >
                                         <img
-                                            src="/placeholder-user.jpg"
+                                            src="assets/images/user.svg"
                                             width={36}
                                             height={36}
                                             alt="Avatar"
