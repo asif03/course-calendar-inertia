@@ -80,3 +80,29 @@
         @apply bg-background text-foreground;
     }
 }
+
+.bg-shape {
+    width: 30vw;
+    height: 30vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: red;
+    /*-moz-border-radius: 0px 0px 20px 110px;
+    -webkit-border-radius: 0px 0px 20px 110px;*/
+    border-radius: 0 0 90vw 0;
+}
+
+.bg-shape:after {
+    content: "";
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: red;
+    border-radius: 50%;
+    top: 0;
+    right: 0;
+    z-index: -1;
+    top: -60%; /* change value as required */
+    right: -20%; /* change value as required */
+}
