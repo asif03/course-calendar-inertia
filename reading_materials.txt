@@ -1,3 +1,5 @@
 https://www.twilio.com/en-us/blog/repository-pattern-in-laravel-application
 
 https://www.youtube.com/watch?v=2TpFkWHDOUI
+
+https://demo.ovatheme.com/mitup/

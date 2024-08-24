@@ -3,6 +3,8 @@ import { PageProps } from "@/types";
 import { Button } from "@/Components/ui/button";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
+import Hero from "@/Components/Hero";
+import CountUp from "react-countup";
 
 export default function Welcome({
     auth,
@@ -12,8 +14,54 @@ export default function Welcome({
     return (
         <>
             <Head title="Welcome" />
-            <div className="min-h-screen bg-[#E66245]">
-                <div className="h-16 w-full bg-[#F8A775]"></div>
+            <div className="min-h-screen">
+                <div id="home">
+                    <Hero />
+                </div>
+
+                <main className="flex-1 overflow-y-auto p-5 text-[#FF7E47]">
+                    <div className="flex w-full flex-row justify-around py-10">
+                        <span className="text-center text-5xl font-extrabold">
+                            <CountUp
+                                end={1000}
+                                enableScrollSpy
+                                duration={2}
+                                scrollSpyOnce
+                            />
+                            +
+                            <br /> Events
+                        </span>{" "}
+                        <span className="text-center text-5xl font-extrabold">
+                            <CountUp end={10} />+<br /> Programs
+                        </span>
+                        <span className="text-center text-5xl font-extrabold">
+                            <CountUp end={10} />+<br /> Schedules
+                        </span>
+                        <span className="text-center text-5xl font-extrabold">
+                            <CountUp end={10} />+<br /> Professonals
+                        </span>
+                    </div>
+
+                    <div>
+                        <h3>ABOUT EVENT</h3>
+                        <div>
+                            <div></div>
+                            <div></div>
+                            <div></div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3>Our Speaker</h3>
+                        <div>Slider</div>
+                    </div>
+
+                    <div>
+                        <h3>UPCOMMING EVENTS</h3>
+                        <div>Tabs</div>
+                    </div>
+                </main>
+
                 {/* <div className="p-6 text-end sm:fixed sm:right-0 sm:top-0">
                     {auth.user ? (
                         <Link
