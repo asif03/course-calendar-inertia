@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -79,30 +81,4 @@
     body {
         @apply bg-background text-foreground;
     }
-}
-
-.bg-shape {
-    width: 30vw;
-    height: 30vh;
-    position: absolute;
-    top: 0;
-    left: 0;
-    background: red;
-    /*-moz-border-radius: 0px 0px 20px 110px;
-    -webkit-border-radius: 0px 0px 20px 110px;*/
-    border-radius: 0 0 90vw 0;
-}
-
-.bg-shape:after {
-    content: "";
-    position: absolute;
-    width: 600px;
-    height: 600px;
-    background: red;
-    border-radius: 50%;
-    top: 0;
-    right: 0;
-    z-index: -1;
-    top: -60%; /* change value as required */
-    right: -20%; /* change value as required */
 }

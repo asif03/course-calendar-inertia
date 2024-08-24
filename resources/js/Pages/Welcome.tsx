@@ -5,12 +5,16 @@ import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import Hero from "@/Components/Hero";
 import CountUp from "react-countup";
+import { Separator } from "@/Components/ui/separator";
+import { LayoutGrid, LayoutList } from "lucide-react";
+import { useState } from "react";
 
 export default function Welcome({
     auth,
     laravelVersion,
     phpVersion,
 }: PageProps<{ laravelVersion: string; phpVersion: string }>) {
+    const [calendarView, setCalendarView] = useState("grid");
     return (
         <>
             <Head title="Welcome" />
@@ -19,11 +23,11 @@ export default function Welcome({
                     <Hero />
                 </div>
 
-                <main className="flex-1 overflow-y-auto p-5 text-[#FF7E47]">
+                <main className="container mx-auto flex h-auto w-full flex-col p-5 text-[#FF7E47]">
                     <div className="flex w-full flex-row justify-around py-10">
                         <span className="text-center text-5xl font-extrabold">
                             <CountUp
-                                end={1000}
+                                end={10}
                                 enableScrollSpy
                                 duration={2}
                                 scrollSpyOnce
@@ -32,13 +36,31 @@ export default function Welcome({
                             <br /> Events
                         </span>{" "}
                         <span className="text-center text-5xl font-extrabold">
-                            <CountUp end={10} />+<br /> Programs
+                            <CountUp
+                                end={10}
+                                enableScrollSpy
+                                duration={2}
+                                scrollSpyOnce
+                            />
+                            +<br /> Programs
                         </span>
                         <span className="text-center text-5xl font-extrabold">
-                            <CountUp end={10} />+<br /> Schedules
+                            <CountUp
+                                end={100}
+                                enableScrollSpy
+                                duration={2}
+                                scrollSpyOnce
+                            />
+                            +<br /> Schedules
                         </span>
                         <span className="text-center text-5xl font-extrabold">
-                            <CountUp end={10} />+<br /> Professonals
+                            <CountUp
+                                end={10}
+                                enableScrollSpy
+                                duration={2}
+                                scrollSpyOnce
+                            />
+                            +<br /> Professonals
                         </span>
                     </div>
 
@@ -56,9 +78,50 @@ export default function Welcome({
                         <div>Slider</div>
                     </div>
 
-                    <div>
-                        <h3>UPCOMMING EVENTS</h3>
-                        <div>Tabs</div>
+                    <div className="flex h-auto w-full flex-col items-center justify-center py-10">
+                        <h3 className="text-center text-5xl font-extrabold">
+                            UPCOMMING EVENTS
+                        </h3>
+                        <Separator className="mt-2 h-1 w-20 bg-[#FF7E47] text-center" />
+                        <div className="flex w-full flex-row items-center justify-end gap-2 py-2 font-bold">
+                            View
+                            <Button
+                                variant="outline"
+                                className={`${calendarView == "grid" ? "bg-[#FF7E47] text-white" : ""} p-1`}
+                                onClick={() => setCalendarView("grid")}
+                            >
+                                <LayoutGrid />
+                            </Button>
+                            <Button
+                                variant="outline"
+                                className={`${calendarView == "list" ? "bg-[#FF7E47] text-white" : ""} p-1`}
+                                onClick={() => setCalendarView("list")}
+                            >
+                                <LayoutList />
+                            </Button>
+                        </div>
+                        <div className="w-full rounded-lg border-2 p-1">
+                            {calendarView == "grid" && (
+                                <div>
+                                    <FullCalendar
+                                        contentHeight={700}
+                                        plugins={[dayGridPlugin]}
+                                        initialView="dayGridMonth"
+                                        events={[
+                                            {
+                                                title: "event 1",
+                                                date: "2024-08-01",
+                                            },
+                                            {
+                                                title: "event 2",
+                                                date: "2024-08-02",
+                                            },
+                                        ]}
+                                    />
+                                </div>
+                            )}
+                            {calendarView == "list" && <div>List View</div>}
+                        </div>
                     </div>
                 </main>
 
