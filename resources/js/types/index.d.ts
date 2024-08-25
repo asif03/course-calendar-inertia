@@ -22,6 +22,18 @@ export type PageProps<
     };
 };
 
+export interface IProgramSchedule {
+    id: bigint;
+    //department: string;
+    progName: string;
+    title: string;
+    dateFrom: Date;
+    dateTo: Date;
+    trainingNature: string;
+    participantLimit: number;
+    status: string;
+}
+
 export interface IProgram {
     id: bigint;
     department: string;

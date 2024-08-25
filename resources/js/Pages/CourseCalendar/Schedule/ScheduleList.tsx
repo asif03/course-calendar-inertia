@@ -1,20 +1,20 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head, Link } from "@inertiajs/react";
-import { IDepartment, IProgram, PageProps } from "@/types";
-import { DataTable } from "@/Components/datatable/programs/data-table";
-import { columns } from "@/Components/datatable/programs/columns";
+import { IDepartment, IProgram, IProgramSchedule, PageProps } from "@/types";
+import { DataTable } from "@/Components/datatable/schedules/data-table";
+import { columns } from "@/Components/datatable/schedules/columns";
 import { Button } from "@/Components/ui/button";
 import { FileIcon, PlusCircle } from "lucide-react";
 import ScheduleBreadcrumb from "./ScheduleBreadcrumb";
 
 const Programs = ({
     auth,
-    programs,
+    programSchedules,
 }: PageProps<{
     mustVerifyEmail: boolean;
     status?: string;
     departments: IDepartment[];
-    programs: IProgram[];
+    programSchedules: IProgramSchedule[];
 }>) => {
     return (
         <AuthenticatedLayout user={auth.user}>
@@ -39,13 +39,14 @@ const Programs = ({
                         >
                             <PlusCircle className="h-3.5 w-3.5" />
                             <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
-                                Add Program
+                                Add Schedule
                             </span>
                         </Link>
                     </div>
                 </div>
                 <div className="py-4">
-                    <DataTable data={programs} columns={columns} />
+                    {/* <ul>{programSchedules.map((item) => item.title)}</ul> */}
+                    <DataTable data={programSchedules} columns={columns} />
                 </div>
             </div>
         </AuthenticatedLayout>

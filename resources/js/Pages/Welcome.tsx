@@ -1,4 +1,4 @@
-import { Link, Head } from "@inertiajs/react";
+import { Link, Head, usePage } from "@inertiajs/react";
 import { PageProps } from "@/types";
 import { Button } from "@/Components/ui/button";
 import FullCalendar from "@fullcalendar/react";
@@ -15,9 +15,13 @@ export default function Welcome({
     phpVersion,
 }: PageProps<{ laravelVersion: string; phpVersion: string }>) {
     const [calendarView, setCalendarView] = useState("grid");
+    const { company } = usePage().props;
     return (
         <>
-            <Head title="Welcome" />
+            <Head>
+                <title>{company.companyShortName}</title>
+                <link rel="icon" type="image/x-icon" href={company.favicon} />
+            </Head>
             <div className="min-h-screen">
                 <div id="home">
                     <Hero />

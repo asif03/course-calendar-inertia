@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CourseCalendar\ProgramController;
+use App\Http\Controllers\CourseCalendar\ProgramScheduleController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Artisan;
@@ -43,6 +44,10 @@ Route::prefix('course-calendar')->group(function () {
             Route::get('/', [ProgramController::class, 'index'])->name('program.list');
             Route::get('/new-program', [ProgramController::class, 'create'])->name('program.create');
             Route::post('/store', [ProgramController::class, 'store'])->name('program.store');
+        });
+
+        Route::prefix('schedules')->group(function () {
+            Route::get('/', [ProgramScheduleController::class, 'index'])->name('schedule.list');
         });
     });
 });

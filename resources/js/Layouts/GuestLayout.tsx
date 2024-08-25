@@ -14,6 +14,7 @@ export default function Guest({ children }: PropsWithChildren) {
     return (
         <>
             <Head>
+                <title>Home</title>
                 <link rel="icon" type="image/x-icon" href={company.favicon} />
             </Head>
             <ThemeProvider>

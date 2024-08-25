@@ -25,8 +25,10 @@ class ProgramScheduleController extends Controller
     {
         $schedules = $this->programScheduleRepository->getAllProgramSchedule();
 
+        //dd($schedules);
+
         return Inertia::render('CourseCalendar/Schedule/ScheduleList', [
-            'schedules' => $schedules,
+            'programSchedules' => $schedules,
         ]);
     }
 
