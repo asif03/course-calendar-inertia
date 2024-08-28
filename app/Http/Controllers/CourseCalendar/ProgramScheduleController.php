@@ -37,7 +37,7 @@ class ProgramScheduleController extends Controller
      */
     public function create()
     {
-        //
+        return Inertia::render('CourseCalendar/Schedule/AddSchedule');
     }
 
     /**

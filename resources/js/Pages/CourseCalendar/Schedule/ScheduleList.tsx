@@ -34,7 +34,7 @@ const Programs = ({
                             </span>
                         </Button>
                         <Link
-                            href={route("program.create")}
+                            href={route("schedule.create")}
                             className="flex h-8 flex-row items-center gap-1 rounded-lg bg-primary p-2 text-sm text-white"
                         >
                             <PlusCircle className="h-3.5 w-3.5" />

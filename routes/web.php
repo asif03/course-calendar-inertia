@@ -48,6 +48,7 @@ Route::prefix('course-calendar')->group(function () {
 
         Route::prefix('schedules')->group(function () {
             Route::get('/', [ProgramScheduleController::class, 'index'])->name('schedule.list');
+            Route::get('/new', [ProgramScheduleController::class, 'create'])->name('schedule.create');
         });
     });
 });
