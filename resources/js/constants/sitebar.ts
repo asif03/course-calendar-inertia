@@ -1,5 +1,11 @@
 import { SidebarMenuItem } from "@/types";
-import { CalendarCog, Home, ListChecks, CalendarClock } from "lucide-react";
+import {
+    CalendarCog,
+    Home,
+    ListChecks,
+    CalendarClock,
+    UsersRound,
+} from "lucide-react";
 
 export const sidebarMenu: SidebarMenuItem[] = [
     {
@@ -22,5 +28,10 @@ export const sidebarMenu: SidebarMenuItem[] = [
                 path: "/course-calendar/schedules",
             },
         ],
+    },
+    {
+        title: "Applicants",
+        icon: UsersRound, // Replace with the appropriate icon
+        path: "/application/applicants",
     },
 ];

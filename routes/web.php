@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Application\ApplicantController;
 use App\Http\Controllers\CourseCalendar\ProgramController;
 use App\Http\Controllers\CourseCalendar\ProgramScheduleController;
 use App\Http\Controllers\ProfileController;
@@ -52,6 +53,12 @@ Route::prefix('course-calendar')->group(function () {
         });
     });
 });
+
+Route::prefix('application')->group(function () {
+    Route::prefix('applicants')->group(function () {
+        Route::resource('/', ApplicantController::class);
+    });
+})->middleware('auth');
 
 Route::get('/artisan-cmd', function () {
     Artisan::call('key:generate');
