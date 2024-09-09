@@ -16,8 +16,7 @@ const Hero = () => {
     }, []);
 
     return (
-        <div className="bg-hero h-dvh w-full bg-stone-300 bg-cover bg-center bg-no-repeat bg-blend-multiply">
-            <div className=""></div>
+        <div className="h-dvh w-full bg-stone-300 bg-hero bg-cover bg-center bg-no-repeat bg-blend-multiply">
             <header
                 className={`${
                     small
@@ -31,7 +30,7 @@ const Hero = () => {
                         logoWidth={company.logoWidthDashboard}
                         logoHeight={company.logoHeightDashboard}
                     />
-                    <ul className="flex flex-row gap-4 font-bold text-white">
+                    <ul className="flex flex-row gap-4 font-bold text-[#FF7E47]">
                         <li>Home</li>
                         <li>Events</li>
                     </ul>
