@@ -8,12 +8,9 @@ import CountUp from "react-countup";
 import { Separator } from "@/Components/ui/separator";
 import { LayoutGrid, LayoutList } from "lucide-react";
 import { useState } from "react";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/Components/ui/tabs";
 
-export default function Welcome({
-    auth,
-    laravelVersion,
-    phpVersion,
-}: PageProps<{ laravelVersion: string; phpVersion: string }>) {
+export default function Welcome({ events }: PageProps<{ events: [] }>) {
     const [calendarView, setCalendarView] = useState("grid");
     const { company } = usePage().props;
     return (
@@ -111,20 +108,34 @@ export default function Welcome({
                                         contentHeight={700}
                                         plugins={[dayGridPlugin]}
                                         initialView="dayGridMonth"
-                                        events={[
-                                            {
-                                                title: "event 1",
-                                                date: "2024-08-01",
-                                            },
-                                            {
-                                                title: "event 2",
-                                                date: "2024-08-02",
-                                            },
-                                        ]}
+                                        events={events}
                                     />
                                 </div>
                             )}
-                            {calendarView == "list" && <div>List View</div>}
+                            {calendarView == "list" && (
+                                <div>
+                                    <Tabs
+                                        defaultValue="account"
+                                        className="w-[400px] text-black"
+                                        orientation="vertical"
+                                    >
+                                        <TabsList className="grid w-full grid-cols-2">
+                                            <TabsTrigger value="account">
+                                                Account
+                                            </TabsTrigger>
+                                            <TabsTrigger value="password">
+                                                Password
+                                            </TabsTrigger>
+                                        </TabsList>
+                                        <TabsContent value="account">
+                                            Account
+                                        </TabsContent>
+                                        <TabsContent value="password">
+                                            Password
+                                        </TabsContent>
+                                    </Tabs>
+                                </div>
+                            )}
                         </div>
                     </div>
                 </main>

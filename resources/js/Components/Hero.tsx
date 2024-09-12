@@ -22,7 +22,7 @@ const Hero = () => {
                     small
                         ? "border-b-2 bg-[#BB8289]"
                         : "bg-pink-50 bg-opacity-50"
-                } sticky left-0 top-0 py-2`}
+                } sticky top-0 py-2`}
             >
                 <nav className="container mx-auto flex flex-row items-center justify-between">
                     <ApplicationLogo
