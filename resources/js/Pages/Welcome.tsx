@@ -1,70 +1,71 @@
 import { Link, Head, usePage } from "@inertiajs/react";
 import { PageProps } from "@/types";
-import { Button } from "@/Components/ui/button";
-import FullCalendar from "@fullcalendar/react";
-import dayGridPlugin from "@fullcalendar/daygrid";
+
 import Hero from "@/Components/Hero";
-import CountUp from "react-countup";
-import { Separator } from "@/Components/ui/separator";
-import { LayoutGrid, LayoutList } from "lucide-react";
-import { useState } from "react";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/Components/ui/tabs";
+
+import { LogInIcon } from "lucide-react";
+import { useEffect, useState } from "react";
+
+import ApplicationLogo from "@/Components/ApplicationLogo";
+import Events from "@/Components/events/Events";
+import MobileMenu from "@/Components/MobileMenu";
 
 export default function Welcome({ events }: PageProps<{ events: [] }>) {
-    const [calendarView, setCalendarView] = useState("grid");
+    const [small, setSmall] = useState(false);
     const { company } = usePage().props;
+
+    useEffect(() => {
+        if (typeof window !== "undefined") {
+            window.addEventListener("scroll", () =>
+                setSmall(window.scrollY > 50),
+            );
+        }
+    }, []);
+
     return (
         <>
             <Head>
                 <title>{company.companyShortName}</title>
                 <link rel="icon" type="image/x-icon" href={company.favicon} />
             </Head>
-            <div className="min-h-screen">
-                <div id="home">
-                    <Hero />
-                </div>
+            <div>
+                <header
+                    className={`${
+                        small
+                            ? "border-b-2 border-[#FF7E47] bg-[#0B3756] text-white"
+                            : "bg-pink-50 bg-opacity-70 text-[#0B3756]"
+                    } sticky left-0 top-0 z-50 py-2`}
+                >
+                    <nav className="container mx-auto flex flex-row items-center justify-between">
+                        <MobileMenu className="block lg:hidden" />
+                        <ApplicationLogo
+                            logoUrl={company.logoDashboard}
+                            logoWidth={company.logoWidthDashboard}
+                            logoHeight={company.logoHeightDashboard}
+                        />
+                        <ul className="hidden flex-row gap-4 font-bold lg:flex">
+                            <li>Home</li>
+                            <li>Events</li>
+                        </ul>
+                        <Link
+                            href={route("login")}
+                            className="flex flex-row items-center justify-center gap-1 text-sm font-bold"
+                        >
+                            <LogInIcon />
+                            Login
+                        </Link>
+                    </nav>
+                </header>
 
-                <main className="container mx-auto flex h-auto w-full flex-col p-5 text-[#FF7E47]">
-                    <div className="flex w-full flex-row justify-around py-10">
-                        <span className="text-center text-5xl font-extrabold">
-                            <CountUp
-                                end={10}
-                                enableScrollSpy
-                                duration={2}
-                                scrollSpyOnce
-                            />
-                            +
-                            <br /> Events
-                        </span>{" "}
-                        <span className="text-center text-5xl font-extrabold">
-                            <CountUp
-                                end={10}
-                                enableScrollSpy
-                                duration={2}
-                                scrollSpyOnce
-                            />
-                            +<br /> Programs
-                        </span>
-                        <span className="text-center text-5xl font-extrabold">
-                            <CountUp
-                                end={100}
-                                enableScrollSpy
-                                duration={2}
-                                scrollSpyOnce
-                            />
-                            +<br /> Schedules
-                        </span>
-                        <span className="text-center text-5xl font-extrabold">
-                            <CountUp
-                                end={10}
-                                enableScrollSpy
-                                duration={2}
-                                scrollSpyOnce
-                            />
-                            +<br /> Professonals
-                        </span>
-                    </div>
+                <Hero
+                    eventsCount={10}
+                    programCount={10}
+                    scheduleCount={100}
+                    applicantCount={1000}
+                />
 
+                <main className="container relative top-[680px] z-0 mx-auto flex h-auto w-full flex-col p-5 text-[#FF7E47] lg:top-[90vh]">
+                    <Events events={events} />
                     <div>
                         <h3>ABOUT EVENT</h3>
                         <div>
@@ -77,66 +78,6 @@ export default function Welcome({ events }: PageProps<{ events: [] }>) {
                     <div>
                         <h3>Our Speaker</h3>
                         <div>Slider</div>
-                    </div>
-
-                    <div className="flex h-auto w-full flex-col items-center justify-center py-10">
-                        <h3 className="text-center text-5xl font-extrabold">
-                            UPCOMMING EVENTS
-                        </h3>
-                        <Separator className="mt-2 h-1 w-20 bg-[#FF7E47] text-center" />
-                        <div className="flex w-full flex-row items-center justify-end gap-2 py-2 font-bold">
-                            View
-                            <Button
-                                variant="outline"
-                                className={`${calendarView == "grid" ? "bg-[#FF7E47] text-white" : ""} p-1`}
-                                onClick={() => setCalendarView("grid")}
-                            >
-                                <LayoutGrid />
-                            </Button>
-                            <Button
-                                variant="outline"
-                                className={`${calendarView == "list" ? "bg-[#FF7E47] text-white" : ""} p-1`}
-                                onClick={() => setCalendarView("list")}
-                            >
-                                <LayoutList />
-                            </Button>
-                        </div>
-                        <div className="w-full rounded-lg border-2 p-1">
-                            {calendarView == "grid" && (
-                                <div>
-                                    <FullCalendar
-                                        contentHeight={700}
-                                        plugins={[dayGridPlugin]}
-                                        initialView="dayGridMonth"
-                                        events={events}
-                                    />
-                                </div>
-                            )}
-                            {calendarView == "list" && (
-                                <div>
-                                    <Tabs
-                                        defaultValue="account"
-                                        className="w-[400px] text-black"
-                                        orientation="vertical"
-                                    >
-                                        <TabsList className="grid w-full grid-cols-2">
-                                            <TabsTrigger value="account">
-                                                Account
-                                            </TabsTrigger>
-                                            <TabsTrigger value="password">
-                                                Password
-                                            </TabsTrigger>
-                                        </TabsList>
-                                        <TabsContent value="account">
-                                            Account
-                                        </TabsContent>
-                                        <TabsContent value="password">
-                                            Password
-                                        </TabsContent>
-                                    </Tabs>
-                                </div>
-                            )}
-                        </div>
                     </div>
                 </main>
 
