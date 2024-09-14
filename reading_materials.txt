@@ -3,3 +3,5 @@ https://www.twilio.com/en-us/blog/repository-pattern-in-laravel-application
 https://www.youtube.com/watch?v=2TpFkWHDOUI
 
 https://demo.ovatheme.com/mitup/
+
+https://github.com/fullcalendar/fullcalendar-examples/blob/main/react19/src/DemoApp.jsx

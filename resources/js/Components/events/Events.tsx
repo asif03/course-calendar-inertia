@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Button } from "@/Components/ui/button";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
+import multiMonthPlugin from "@fullcalendar/multimonth";
 import { Separator } from "@/Components/ui/separator";
 import { LayoutGrid, LayoutList } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/Components/ui/tabs";
@@ -33,34 +34,34 @@ const Events = (events) => {
             </div>
             <div className="w-full rounded-lg border-2 p-1">
                 {calendarView == "grid" && (
-                    <div>
+                    <div className="w-full">
                         <FullCalendar
                             contentHeight={700}
                             plugins={[dayGridPlugin]}
                             initialView="dayGridMonth"
                             events={events}
+                            weekends={true}
                         />
                     </div>
                 )}
                 {calendarView == "list" && (
                     <div className="w-full">
-                        <Tabs
-                            defaultValue="account"
-                            className="w-full bg-slate-500"
-                            orientation="vertical"
-                            aria-orientation="vertical"
-                        >
-                            <TabsList className="grid w-full grid-cols-2">
-                                <TabsTrigger value="account">
-                                    Account
-                                </TabsTrigger>
-                                <TabsTrigger value="password">
-                                    Password
-                                </TabsTrigger>
-                            </TabsList>
-                            <TabsContent value="account">Account</TabsContent>
-                            <TabsContent value="password">Password</TabsContent>
-                        </Tabs>
+                        <FullCalendar
+                            plugins={[multiMonthPlugin]}
+                            initialView="multiMonthYear"
+                            events={events}
+                            /*weekends={weekendsVisible}
+          initialEvents={INITIAL_EVENTS} // alternatively, use the `events` setting to fetch from a feed
+          select={handleDateSelect}
+          eventContent={renderEventContent} // custom render function
+          eventClick={handleEventClick}
+          eventsSet={handleEvents} // called after events are initialized/added/changed/removed
+          /* you can update a remote database when these fire:
+          eventAdd={function(){}}
+          eventChange={function(){}}
+          eventRemove={function(){}}
+          */
+                        />
                     </div>
                 )}
             </div>
