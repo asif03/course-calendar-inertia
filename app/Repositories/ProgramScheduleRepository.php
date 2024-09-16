@@ -12,13 +12,15 @@ class ProgramScheduleRepository implements ProgramScheduleRepositoryInterface
         $schedules = array();
         $scheduleList = ProgramSchedule::select('prog_id', 'id', 'schedule_title', 'date_from', 'date_to', 'participant_limit', 'training_nature', 'status')
             ->with([
-                'program' => function ($q) {
+                'program' => function ($q)
+            {
                     $q->select('id', 'dept_id', 'prog_name', 'prog_fee', 'notice_link', 'course_status',
-                        'is_attachment', 'status');
+                        'is_attachment', 'bgcolor', 'status');
                 }])
             ->get();
 
-        foreach ($scheduleList as $sched) {
+        foreach ($scheduleList as $sched)
+        {
             $schedule['id'] = $sched->id;
             $schedule['progName'] = $sched['program']->prog_name;
             $schedule['title'] = $sched->schedule_title;
@@ -27,6 +29,7 @@ class ProgramScheduleRepository implements ProgramScheduleRepositoryInterface
             $schedule['trainingNature'] = $sched->training_nature;
             $schedule['participantLimit'] = $sched->participant_limit;
             $schedule['status'] = $sched->status ? 'Active' : 'Inactive';
+            $schedule['eventColor'] = $sched['program']->bgcolor;
 
             $schedules[] = $schedule;
         }

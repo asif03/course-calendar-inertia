@@ -22,6 +22,7 @@ class ProgramSeeder extends Seeder
                 'reg_close_date' => date('Y-m-d', strtotime(' + 1 months')),
                 'notice_link'    => null,
                 'course_status'  => 'M',
+                'bgcolor'        => '#FF7E47',
             ],
             [
                 'id'             => 2,
@@ -32,11 +33,13 @@ class ProgramSeeder extends Seeder
                 'reg_close_date' => date('Y-m-d', strtotime(' + 2 months')),
                 'notice_link'    => null,
                 'course_status'  => 'M',
+                'bgcolor'        => '#0B3756',
             ],
 
         ];
 
-        foreach ($input as $data) {
+        foreach ($input as $data)
+        {
             Program::create($data);
         }
     }

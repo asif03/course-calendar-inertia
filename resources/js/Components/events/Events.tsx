@@ -5,7 +5,8 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import multiMonthPlugin from "@fullcalendar/multimonth";
 import { Separator } from "@/Components/ui/separator";
 import { LayoutGrid, LayoutList } from "lucide-react";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/Components/ui/tabs";
+import "react-tooltip/dist/react-tooltip.css";
+import { Tooltip } from "react-tooltip";
 
 const Events = (events) => {
     const [calendarView, setCalendarView] = useState("grid");
@@ -40,7 +41,16 @@ const Events = (events) => {
                             plugins={[dayGridPlugin]}
                             initialView="dayGridMonth"
                             events={events}
-                            weekends={true}
+                            eventDidMount={function (info) {
+                                console.log(info.event.title);
+                                <Tooltip />;
+                                /*var tooltip = new Tooltip(info.el, {
+                                    title: info.event.extendedProps.description,
+                                    placement: "top",
+                                    trigger: "hover",
+                                    container: "body",
+                                });*/
+                            }}
                         />
                     </div>
                 )}

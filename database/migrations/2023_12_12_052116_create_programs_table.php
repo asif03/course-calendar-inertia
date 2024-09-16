@@ -11,7 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('programs', function (Blueprint $table) {
+        Schema::create('programs', function (Blueprint $table)
+        {
             $table->id();
             $table->unsignedBigInteger('dept_id');
             $table->string('prog_name', 500);
@@ -21,6 +22,7 @@ return new class extends Migration
             $table->string('notice_link', 500)->nullable();
             $table->enum('course_status', ['M', 'O'])->default('O')->comment('M=Mandatory, O=Optional');
             $table->boolean('is_attachment')->default(false);
+            $table->string('bgcolor')->nullable();
             $table->boolean('status')->default(true);
             $table->unsignedBigInteger('created_by')->nullable();
             $table->unsignedBigInteger('updated_by')->nullable();
